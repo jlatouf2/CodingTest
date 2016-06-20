@@ -1,0 +1,23 @@
+{
+  "name": "eman3",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "jlatouf2 <jlatouf2@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "engines": {
+    "node": "0.12.7"
+  }
+  "dependencies": {
+    "angular": "^1.5.7"
+  }
+}

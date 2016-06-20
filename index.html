@@ -1,0 +1,98 @@
+<html ng-app = "mainApp">
+
+   <head>
+      <title>AngularJS First Application</title>
+   </head>
+
+   <body>
+      <h1>Sample Application</h1>
+
+      <div  ng-controller = "studentController">
+<p> * Make Sure to enter values between 2016-01-01 and 2017-12-01 (and in this format: 2017-01-01) </p>
+
+         <p>Please Enter a Date (to return values before that date): <input type = "text" ng-model="Date" placeholder="YYYY/MM/DD" >
+           <button class="btn btn-danger btn-xs" ng-click="getDate2()">GetDate</button></p>
+
+           <p>Please Enter a Date (to return values after that date) : <input type = "text" ng-model="Date2" placeholder="YYYY/MM/DD" >
+             <button class="btn btn-danger btn-xs" ng-click="getDate3()">GetDate</button></p>
+
+      <!--     <a href="afterDate">Get Nubmers After Date</a> </br></br></br>
+           <a href="beforeDate">Get Nubmers Before Date</a> </br></br></br> -->
+           <a href="findDates">Get All Dates</a> </br></br></br>
+           <br>
+
+           <div ng-controller="studentController" style="text-align:center;">
+             <table>
+               <tr>
+                 <th>Date </th>
+                 <th>Share </th>
+                 <th>Money </th>
+                 <th>Like </th>
+                 <th>Views </th>
+
+               </tr>
+               <tr ng-repeat="user in userstuff">
+                 <td>{{user.date }} </td>
+                 <td>{{user.share }} </td>
+                 <td>{{user.money }} </td>
+                 <td>{{user.like }} </td>
+                 <td>{{user.views }}</td>
+
+               </tr>
+             </table>
+           </body>
+
+
+      </div>
+
+      <script src = "bower_components/angular/angular.min.js"></script>
+
+
+      <script>
+               var mainApp = angular.module("mainApp", []);
+
+               mainApp.controller('studentController', function($scope, $http) {
+
+
+                 $scope.getDate = function(){
+         					    	console.log('Name in Line ' + $scope.Date);
+
+                          };
+
+
+            $scope.getDate2 = function(){
+                   console.log('Name in Line ' + $scope.Date);
+
+                 $http.post('/findDate22', {"name": $scope.Date}).success(function(data, date ) {
+                         console.log("DatePassed");
+                          console.log(data[1].date);
+                         $scope.userstuff = data;
+
+                 }, function(posts) {});
+
+               };
+
+
+               $scope.getDate3 = function(){
+                      console.log('Name in Line ' + $scope.Date2);
+
+                    $http.post('/findDate33', {"name": $scope.Date2}).success(function(data, date ) {
+                            console.log("DatePassed");
+                             console.log(data[1].date);
+                            $scope.userstuff = data;
+
+                    }, function(posts) {});
+
+                  };
+
+
+
+
+                        });
+
+      </script>
+
+
+
+   </body>
+</html>
