@@ -167,23 +167,7 @@ app.get('/addDate', function (req, res, next) {
   });
 
 
-  app.post('/findDate33', function (req, res, next) {
-        console.log(req.body.name);
-    User3.find({date: {$gt : req.body.name}})
-    // 2017-06-01 T05:00:00.000Z
-    .sort('-date')
-      .exec(function(err, posts) {
 
-      if (err) {
-        console.log('did not work');
-      }
-
-      res.send(posts);
-
-      // object of all the users
-      console.log(posts);
-    });
-  });
 
 
 
